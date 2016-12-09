@@ -24,4 +24,21 @@ describe('erasmusList reducer', () => {
             )
         ).toEqual(testList)
     })
+
+    it('adds an erasmus', () => {
+        const testErasmus = {
+            id: 1,
+            name: "Name",
+            surname: "Surname"
+        }
+        expect(
+            erasmusList(
+                undefined,
+                {
+                    type: "ADD_ERASMUS",
+                    erasmus: testErasmus
+                }
+            )
+        ).toEqual([testErasmus])
+    })
 })
