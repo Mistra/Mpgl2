@@ -1,9 +1,17 @@
-//import axios from 'axios'
+import axios from 'axios'
 
 export const addErasmus = erasmus => ({
     type: "ADD_ERASMUS",
     erasmus
 })
+
+export const uploadErasmus = erasmusWithoutId => dispatch => {
+    return axios.post('http://localhost:8080/api/erasmus', erasmusWithoutId)
+    .then(response => dispatch(addErasmus({
+        ...erasmusWithoutId,
+        id: response.data
+    })))
+}
 
 export const receiveErasmusList = erasmusList => ({
     type: "RECEIVE_ERASMUSLIST",
@@ -17,14 +25,8 @@ export const setNameFilter = filter => ({
 
 export const fetchErasmusList = dispatch => {
     dispatch({type:"FETCH_ERASMUSLIST"})
-
-    return fetch("http://localhost:8080/api/erasmus")
-    .then(response => response.json())
-    .then(json => dispatch(receiveErasmusList(json)))
-    /*
-    return axios.get("http://localhost:8080/api/erasmus").then(
-        response => dispatch(receiveErasmusList(response.data))
-    )*/
+    return axios.get("http://localhost:8080/api/erasmus")
+    .then(response => dispatch(receiveErasmusList(response.data)))
 }
 
 export const fetchErasmusListIfNeeded = (dispatch, getState) => {

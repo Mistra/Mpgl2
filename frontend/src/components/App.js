@@ -2,6 +2,7 @@ import React from 'react';
 import VisibleErasmus from '../containers/VisibleErasmus'
 //import RefreshButton from '../containers/RefreshButton'
 import FilterForm from '../containers/FilterForm'
+import AddErasmus from '../containers/AddErasmus'
 
 const App = () => (
     <div>
@@ -9,6 +10,7 @@ const App = () => (
         {/**<RefreshButton/>*/}
         <FilterForm/>
         <VisibleErasmus/>
+        <AddErasmus/>
     </div>
 )
 
