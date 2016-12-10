@@ -1,4 +1,13 @@
 import erasmusList from './erasmusList'
+import { erasmus } from './erasmusList'
+
+describe('erasmus reducer', () => {
+    it('handles default case', () => {
+        expect (
+            erasmus([], {})
+        ).toEqual([])
+    })
+})
 
 describe('erasmusList reducer', () => {
     it('handles initial state', () => {
@@ -12,6 +21,8 @@ describe('erasmusList reducer', () => {
         name: 'Foo',
         surname: 'Bar'
     }]
+
+
 
     it('handles receiving', () => {
         expect(

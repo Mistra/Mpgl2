@@ -1,5 +1,5 @@
 
-const erasmus = (state, action) => {
+export const erasmus = (state, action) => {
     switch (action.type) {
         case "ADD_ERASMUS": return action.erasmus
         default: return state
