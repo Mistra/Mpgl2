@@ -41,4 +41,20 @@ describe('erasmusList reducer', () => {
             )
         ).toEqual([testErasmus])
     })
+
+    it('deletes an erasmus by id', () => {
+        const initialState = [
+            { id: 1, other: 'other' },
+            { id: 2, other: 'other2' }
+        ]
+        expect(
+            erasmusList(
+                initialState,
+                {
+                    type: "DELETE_ERASMUS",
+                    id: 1
+                }
+            )
+        ).toEqual( [{ id: 2, other: 'other2' }] )
+    })
 })
