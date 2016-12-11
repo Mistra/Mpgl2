@@ -10,6 +10,11 @@ export const deleteErasmus = id => ({
     id
 })
 
+export const remoteDeleteErasmus = id => dispatch => {
+    axios.delete(`http://localhost:8080/api/erasmus/${id}`)
+    .then(response => dispatch(deleteErasmus(id)))
+}
+
 export const uploadErasmus = erasmusWithoutId => dispatch => {
     return axios.post('http://localhost:8080/api/erasmus', erasmusWithoutId)
     .then(response => dispatch(addErasmus({
