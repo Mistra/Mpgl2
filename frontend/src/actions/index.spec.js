@@ -18,7 +18,7 @@ describe('erasmusList actions', () => {
 
     const testList = [testErasmus]
 
-    it('dispatches correctly receiveErasmusList', () => {
+    it('dispatches receiveErasmusList', () => {
         expect(actions.receiveErasmusList(testList)).toEqual(
             {
                 type: "RECEIVE_ERASMUSLIST",
@@ -27,11 +27,20 @@ describe('erasmusList actions', () => {
         )
     })
 
-    it('dispatches correctly addErasmus', () => {
+    it('dispatches addErasmus', () => {
         expect(actions.addErasmus(testErasmus)).toEqual(
             {
                 type: "ADD_ERASMUS",
                 erasmus: testErasmus
+            }
+        )
+    })
+
+    it('dispatches deleteErasmus', () => {
+        expect(actions.deleteErasmus(1)).toEqual(
+            {
+                type: "DELETE_ERASMUS",
+                id: 1
             }
         )
     })
