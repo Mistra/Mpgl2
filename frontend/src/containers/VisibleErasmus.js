@@ -1,12 +1,10 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import Table from '../components/Table'
+import Message from '../components/Message'
 import { fetchErasmusListIfNeeded, remoteDeleteErasmus } from '../actions'
 
-const Message = ({children}) => (
-    <p>{children}</p>
-)
-
+// It handles to loading of the erasmus list
 class ErasmusTable extends React.Component {
     componentWillMount() {
         this.props.dispatch(fetchErasmusListIfNeeded)
@@ -20,13 +18,7 @@ class ErasmusTable extends React.Component {
     }
 }
 
-// Question: is it really worthy splitting ErasmusTable and DTable in 2
-// different components?
-// Could DynamicTable be general? aka (Comp1, Comp2, condition)
-
-// Possible answer: yes... one handles the loading, the other
-// handles the selection logic. Both could increase.
-
+// It handles the logic of what to display
 const DynamicTable = ({erasmusList, deleteErasmusById}) => {
 
     const tableIsEmpty = () => (
